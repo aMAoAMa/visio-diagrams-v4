@@ -1,0 +1,153 @@
+{
+  "scenes": [
+    {
+      "name": "v3_hidden_lines",
+      "width": 8,
+      "height": 4.8,
+      "font": "Arial",
+      "fontEastAsia": "Microsoft YaHei",
+      "layers": [
+        {
+          "name": "assembly",
+          "owner": "rig",
+          "concept": "entity"
+        },
+        {
+          "name": "body-frame",
+          "owner": "rig",
+          "concept": "coordinate"
+        },
+        {
+          "name": "sensor-frame",
+          "owner": "sensor",
+          "concept": "coordinate"
+        },
+        {
+          "name": "world-frame",
+          "owner": "world",
+          "concept": "coordinate"
+        },
+        {
+          "name": "moments",
+          "owner": "rig",
+          "concept": "moment"
+        },
+        {
+          "name": "forces",
+          "owner": "rig",
+          "concept": "force"
+        },
+        {
+          "name": "notes",
+          "owner": "figure",
+          "concept": "annotation"
+        }
+      ],
+      "camera": {
+        "eye": [
+          5,
+          -8,
+          5
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "up": [
+          0,
+          0,
+          1
+        ],
+        "scale": 1.0,
+        "origin": [
+          4,
+          2.05
+        ]
+      },
+      "primitives": [
+        {
+          "id": "body",
+          "kind": "box",
+          "layer": "assembly",
+          "size3d": [
+            2.4,
+            1.8,
+            1.4
+          ],
+          "fill": "#CDDCE6",
+          "line": "#35566D",
+          "hidden": "dash"
+        },
+        {
+          "id": "line",
+          "kind": "arrow",
+          "layer": "forces",
+          "points": [
+            [
+              -2.4,
+              0,
+              0
+            ],
+            [
+              2.4,
+              0,
+              0
+            ]
+          ],
+          "hidden": "dash",
+          "line": "#774996",
+          "weight": 2
+        },
+        {
+          "id": "axis",
+          "kind": "frame",
+          "layer": "world-frame",
+          "origin": [
+            -1.2,
+            -0.9,
+            0.7
+          ],
+          "lengths": [
+            1.8,
+            1.6,
+            1.1
+          ],
+          "labels": [
+            "x_{w}",
+            "y_{w}",
+            "z_{w}"
+          ],
+          "size": 18,
+          "label_width": 0.5
+        }
+      ],
+      "overlays": [
+        {
+          "id": "title",
+          "kind": "text",
+          "layer": "notes",
+          "x": 0.35,
+          "y": 4.15,
+          "w": 7.3,
+          "h": 0.4,
+          "text": "自动隐线 · 线段与实体的真实遮挡",
+          "size": 21,
+          "color": "#243646"
+        },
+        {
+          "id": "note",
+          "kind": "text",
+          "layer": "notes",
+          "x": 0.35,
+          "y": 0.25,
+          "w": 7.3,
+          "h": 0.4,
+          "text": "弱虚线表示被遮挡部分；箭头仅保留在原始可见端点",
+          "size": 16,
+          "color": "#243646"
+        }
+      ]
+    }
+  ]
+}

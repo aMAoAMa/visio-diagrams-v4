@@ -1,0 +1,62 @@
+{
+  "scenes": [
+    {
+      "name": "v3_native_flow",
+      "width": 7,
+      "height": 3.2,
+      "font": "Arial",
+      "fontEastAsia": "Microsoft YaHei",
+      "layers": [
+        {
+          "name": "nodes",
+          "owner": "flow",
+          "concept": "entity"
+        },
+        {
+          "name": "connections",
+          "owner": "flow",
+          "concept": "connection"
+        }
+      ],
+      "shapes": [
+        {
+          "id": "in",
+          "kind": "rect",
+          "layer": "nodes",
+          "x": 0.5,
+          "y": 1,
+          "w": 2,
+          "h": 1,
+          "fill": "#E5EEF4",
+          "line": "#35566D",
+          "text": "输入 a_b",
+          "size": 18
+        },
+        {
+          "id": "out",
+          "kind": "rect",
+          "layer": "nodes",
+          "x": 4.5,
+          "y": 1,
+          "w": 2,
+          "h": 1,
+          "fill": "#E5EEF4",
+          "line": "#35566D",
+          "text": "Q_{01}^{(2)}",
+          "notation": true,
+          "size": 20
+        },
+        {
+          "id": "edge",
+          "kind": "connector",
+          "layer": "connections",
+          "from": "in",
+          "to": "out",
+          "line": "#35566D",
+          "weight": 1.5,
+          "endArrow": true
+        }
+      ]
+    }
+  ]
+}

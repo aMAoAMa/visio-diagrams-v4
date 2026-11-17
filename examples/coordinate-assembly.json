@@ -1,0 +1,766 @@
+{
+  "scenes": [
+    {
+      "name": "v3_orthographic",
+      "width": 9,
+      "height": 6.1,
+      "font": "Arial",
+      "fontEastAsia": "Microsoft YaHei",
+      "layers": [
+        {
+          "name": "assembly",
+          "owner": "rig",
+          "concept": "entity"
+        },
+        {
+          "name": "body-frame",
+          "owner": "rig",
+          "concept": "coordinate"
+        },
+        {
+          "name": "sensor-frame",
+          "owner": "sensor",
+          "concept": "coordinate"
+        },
+        {
+          "name": "world-frame",
+          "owner": "world",
+          "concept": "coordinate"
+        },
+        {
+          "name": "moments",
+          "owner": "rig",
+          "concept": "moment"
+        },
+        {
+          "name": "forces",
+          "owner": "rig",
+          "concept": "force"
+        },
+        {
+          "name": "notes",
+          "owner": "figure",
+          "concept": "annotation"
+        }
+      ],
+      "camera": {
+        "eye": [
+          7,
+          -9,
+          7
+        ],
+        "target": [
+          0,
+          0,
+          0.35
+        ],
+        "up": [
+          0,
+          0,
+          1
+        ],
+        "scale": 1.02,
+        "origin": [
+          4.45,
+          2.55
+        ]
+      },
+      "views": {
+        "world": {
+          "eye": [
+            7,
+            -9,
+            7
+          ],
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "scale": 0.65,
+          "origin": [
+            1.05,
+            1.4
+          ]
+        }
+      },
+      "poses": {
+        "body": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "euler_deg": [
+            7,
+            -6,
+            18
+          ]
+        },
+        "sensor": {
+          "parent": "body",
+          "origin": [
+            0.45,
+            0.2,
+            1.72
+          ],
+          "euler_deg": [
+            0,
+            22,
+            -18
+          ]
+        }
+      },
+      "primitives": [
+        {
+          "id": "plate",
+          "kind": "box",
+          "pose": "body",
+          "layer": "assembly",
+          "size3d": [
+            3.4,
+            2.2,
+            0.6
+          ],
+          "fill": "#C8D9E6",
+          "line": "#35566D",
+          "weight": 1.1,
+          "hidden": "omit"
+        },
+        {
+          "id": "shaft",
+          "kind": "cylinder",
+          "pose": "body",
+          "layer": "assembly",
+          "center": [
+            0.45,
+            0.2,
+            1.0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "radius": 0.38,
+          "length": 1.4,
+          "segments": 32,
+          "fill": "#AABFD0",
+          "line": "#35566D",
+          "weight": 1.1,
+          "hidden": "omit"
+        },
+        {
+          "id": "body",
+          "kind": "frame",
+          "pose": "body",
+          "layer": "body-frame",
+          "origin": [
+            -1.7,
+            -1.1,
+            0.3
+          ],
+          "lengths": [
+            2.8,
+            2.4,
+            1.9
+          ],
+          "labels": [
+            "x_{b}",
+            "y_{b}",
+            "z_{b}"
+          ],
+          "size": 19,
+          "label_width": 0.55
+        },
+        {
+          "id": "sensor",
+          "kind": "frame",
+          "pose": "sensor",
+          "layer": "sensor-frame",
+          "lengths": [
+            0.9,
+            0.9,
+            0.9
+          ],
+          "labels": [
+            "x_{s}",
+            "y_{s}",
+            "z_{s}"
+          ],
+          "label_offsets": [
+            [
+              0.1,
+              -0.35
+            ],
+            [
+              0.1,
+              0.02
+            ],
+            [
+              -0.5,
+              0.02
+            ]
+          ],
+          "size": 17,
+          "label_width": 0.5,
+          "weight": 1.5
+        },
+        {
+          "id": "world",
+          "kind": "frame",
+          "view": "world",
+          "layer": "world-frame",
+          "lengths": [
+            1.1,
+            1.1,
+            1.1
+          ],
+          "labels": [
+            "x_{w}",
+            "y_{w}",
+            "z_{w}"
+          ],
+          "size": 17,
+          "label_width": 0.5,
+          "visibility": "overlay"
+        },
+        {
+          "id": "moment",
+          "kind": "arc",
+          "pose": "body",
+          "layer": "moments",
+          "center": [
+            0.45,
+            0.2,
+            1.95
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "start_direction": [
+            1,
+            0,
+            0
+          ],
+          "radius": 0.62,
+          "sweep_deg": 260,
+          "line": "#9B602B",
+          "weight": 1.9
+        },
+        {
+          "id": "moment-label",
+          "kind": "label",
+          "pose": "body",
+          "layer": "moments",
+          "anchor": [
+            1.05,
+            0.2,
+            1.95
+          ],
+          "text": "M_{z}",
+          "notation": true,
+          "offset": [
+            0.55,
+            -0.05
+          ],
+          "w": 0.6,
+          "h": 0.35,
+          "size": 18,
+          "color": "#9B602B"
+        },
+        {
+          "id": "load",
+          "kind": "arrow",
+          "pose": "body",
+          "layer": "forces",
+          "points": [
+            [
+              -0.8,
+              -0.4,
+              2.0
+            ],
+            [
+              -0.8,
+              -0.4,
+              0.31
+            ]
+          ],
+          "line": "#774996",
+          "weight": 2
+        },
+        {
+          "id": "load-label",
+          "kind": "label",
+          "pose": "body",
+          "layer": "forces",
+          "anchor": [
+            -0.8,
+            -0.4,
+            1.5
+          ],
+          "text": "F",
+          "offset": [
+            -0.55,
+            0
+          ],
+          "w": 0.4,
+          "h": 0.35,
+          "size": 19,
+          "color": "#774996"
+        }
+      ],
+      "overlays": [
+        {
+          "id": "title",
+          "kind": "text",
+          "layer": "notes",
+          "x": 0.4,
+          "y": 5.5,
+          "w": 7.8,
+          "h": 0.4,
+          "text": "正交视图 · 层级坐标与受力示意",
+          "size": 22,
+          "color": "#243646"
+        },
+        {
+          "id": "sub",
+          "kind": "text",
+          "layer": "notes",
+          "x": 0.4,
+          "y": 5.0,
+          "w": 8.1,
+          "h": 0.4,
+          "text": "主体、作用点和坐标轴共用三维变换；示意几何",
+          "size": 16,
+          "color": "#243646"
+        },
+        {
+          "id": "world-note",
+          "kind": "text",
+          "layer": "notes",
+          "x": 0.15,
+          "y": 0.25,
+          "w": 2.5,
+          "h": 0.4,
+          "text": "世界系（移位显示）",
+          "size": 16,
+          "color": "#243646"
+        },
+        {
+          "id": "body-note",
+          "kind": "text",
+          "layer": "notes",
+          "x": 3.7,
+          "y": 0.5,
+          "w": 3.8,
+          "h": 0.4,
+          "text": "物体系原点绑定板面角点",
+          "size": 16,
+          "color": "#243646"
+        },
+        {
+          "id": "key",
+          "kind": "text",
+          "layer": "notes",
+          "x": 2.7,
+          "y": 0.05,
+          "w": 6.0,
+          "h": 0.4,
+          "text": "x / y / z 以红 / 绿 / 蓝区分；正力矩遵循右手定则",
+          "size": 14,
+          "color": "#243646"
+        }
+      ]
+    },
+    {
+      "name": "v3_perspective",
+      "width": 9,
+      "height": 6.1,
+      "font": "Arial",
+      "fontEastAsia": "Microsoft YaHei",
+      "layers": [
+        {
+          "name": "assembly",
+          "owner": "rig",
+          "concept": "entity"
+        },
+        {
+          "name": "body-frame",
+          "owner": "rig",
+          "concept": "coordinate"
+        },
+        {
+          "name": "sensor-frame",
+          "owner": "sensor",
+          "concept": "coordinate"
+        },
+        {
+          "name": "world-frame",
+          "owner": "world",
+          "concept": "coordinate"
+        },
+        {
+          "name": "moments",
+          "owner": "rig",
+          "concept": "moment"
+        },
+        {
+          "name": "forces",
+          "owner": "rig",
+          "concept": "force"
+        },
+        {
+          "name": "notes",
+          "owner": "figure",
+          "concept": "annotation"
+        }
+      ],
+      "camera": {
+        "eye": [
+          7,
+          -9,
+          7
+        ],
+        "target": [
+          0,
+          0,
+          0.35
+        ],
+        "up": [
+          0,
+          0,
+          1
+        ],
+        "scale": 1.02,
+        "origin": [
+          4.45,
+          2.55
+        ],
+        "projection": "perspective",
+        "near": 0.2
+      },
+      "views": {
+        "world": {
+          "eye": [
+            7,
+            -9,
+            7
+          ],
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "scale": 0.65,
+          "origin": [
+            1.05,
+            1.4
+          ]
+        }
+      },
+      "poses": {
+        "body": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "euler_deg": [
+            7,
+            -6,
+            18
+          ]
+        },
+        "sensor": {
+          "parent": "body",
+          "origin": [
+            0.45,
+            0.2,
+            1.72
+          ],
+          "euler_deg": [
+            0,
+            22,
+            -18
+          ]
+        }
+      },
+      "primitives": [
+        {
+          "id": "plate",
+          "kind": "box",
+          "pose": "body",
+          "layer": "assembly",
+          "size3d": [
+            3.4,
+            2.2,
+            0.6
+          ],
+          "fill": "#C8D9E6",
+          "line": "#35566D",
+          "weight": 1.1,
+          "hidden": "omit"
+        },
+        {
+          "id": "shaft",
+          "kind": "cylinder",
+          "pose": "body",
+          "layer": "assembly",
+          "center": [
+            0.45,
+            0.2,
+            1.0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "radius": 0.38,
+          "length": 1.4,
+          "segments": 32,
+          "fill": "#AABFD0",
+          "line": "#35566D",
+          "weight": 1.1,
+          "hidden": "omit"
+        },
+        {
+          "id": "body",
+          "kind": "frame",
+          "pose": "body",
+          "layer": "body-frame",
+          "origin": [
+            -1.7,
+            -1.1,
+            0.3
+          ],
+          "lengths": [
+            2.8,
+            2.4,
+            1.9
+          ],
+          "labels": [
+            "x_{b}",
+            "y_{b}",
+            "z_{b}"
+          ],
+          "size": 19,
+          "label_width": 0.55
+        },
+        {
+          "id": "sensor",
+          "kind": "frame",
+          "pose": "sensor",
+          "layer": "sensor-frame",
+          "lengths": [
+            0.9,
+            0.9,
+            0.9
+          ],
+          "labels": [
+            "x_{s}",
+            "y_{s}",
+            "z_{s}"
+          ],
+          "label_offsets": [
+            [
+              0.1,
+              -0.35
+            ],
+            [
+              0.1,
+              0.02
+            ],
+            [
+              -0.5,
+              0.02
+            ]
+          ],
+          "size": 17,
+          "label_width": 0.5,
+          "weight": 1.5
+        },
+        {
+          "id": "world",
+          "kind": "frame",
+          "view": "world",
+          "layer": "world-frame",
+          "lengths": [
+            1.1,
+            1.1,
+            1.1
+          ],
+          "labels": [
+            "x_{w}",
+            "y_{w}",
+            "z_{w}"
+          ],
+          "size": 17,
+          "label_width": 0.5,
+          "visibility": "overlay"
+        },
+        {
+          "id": "moment",
+          "kind": "arc",
+          "pose": "body",
+          "layer": "moments",
+          "center": [
+            0.45,
+            0.2,
+            1.95
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "start_direction": [
+            1,
+            0,
+            0
+          ],
+          "radius": 0.62,
+          "sweep_deg": 260,
+          "line": "#9B602B",
+          "weight": 1.9
+        },
+        {
+          "id": "moment-label",
+          "kind": "label",
+          "pose": "body",
+          "layer": "moments",
+          "anchor": [
+            1.05,
+            0.2,
+            1.95
+          ],
+          "text": "M_{z}",
+          "notation": true,
+          "offset": [
+            0.55,
+            -0.05
+          ],
+          "w": 0.6,
+          "h": 0.35,
+          "size": 18,
+          "color": "#9B602B"
+        },
+        {
+          "id": "load",
+          "kind": "arrow",
+          "pose": "body",
+          "layer": "forces",
+          "points": [
+            [
+              -0.8,
+              -0.4,
+              2.0
+            ],
+            [
+              -0.8,
+              -0.4,
+              0.31
+            ]
+          ],
+          "line": "#774996",
+          "weight": 2
+        },
+        {
+          "id": "load-label",
+          "kind": "label",
+          "pose": "body",
+          "layer": "forces",
+          "anchor": [
+            -0.8,
+            -0.4,
+            1.5
+          ],
+          "text": "F",
+          "offset": [
+            -0.55,
+            0
+          ],
+          "w": 0.4,
+          "h": 0.35,
+          "size": 19,
+          "color": "#774996"
+        }
+      ],
+      "overlays": [
+        {
+          "id": "title",
+          "kind": "text",
+          "layer": "notes",
+          "x": 0.4,
+          "y": 5.5,
+          "w": 7.8,
+          "h": 0.4,
+          "text": "透视视图 · 同一三维场景",
+          "size": 22,
+          "color": "#243646"
+        },
+        {
+          "id": "sub",
+          "kind": "text",
+          "layer": "notes",
+          "x": 0.4,
+          "y": 5.0,
+          "w": 8.1,
+          "h": 0.4,
+          "text": "透视缩短由相机统一计算；文字保持原生可编辑",
+          "size": 16,
+          "color": "#243646"
+        },
+        {
+          "id": "world-note",
+          "kind": "text",
+          "layer": "notes",
+          "x": 0.15,
+          "y": 0.25,
+          "w": 2.5,
+          "h": 0.4,
+          "text": "世界系（移位显示）",
+          "size": 16,
+          "color": "#243646"
+        },
+        {
+          "id": "body-note",
+          "kind": "text",
+          "layer": "notes",
+          "x": 3.7,
+          "y": 0.5,
+          "w": 3.8,
+          "h": 0.4,
+          "text": "物体系原点绑定板面角点",
+          "size": 16,
+          "color": "#243646"
+        },
+        {
+          "id": "key",
+          "kind": "text",
+          "layer": "notes",
+          "x": 2.7,
+          "y": 0.05,
+          "w": 6.0,
+          "h": 0.4,
+          "text": "x / y / z 以红 / 绿 / 蓝区分；正力矩遵循右手定则",
+          "size": 14,
+          "color": "#243646"
+        }
+      ]
+    }
+  ]
+}

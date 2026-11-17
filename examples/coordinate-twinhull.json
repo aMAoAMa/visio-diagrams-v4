@@ -1,0 +1,864 @@
+{
+  "scenes": [
+    {
+      "name": "v2_coordinate_example",
+      "width": 10.4,
+      "height": 6.2,
+      "font": "Arial",
+      "fontEastAsia": "Microsoft YaHei",
+      "layers": [
+        {
+          "name": "hull",
+          "owner": "craft",
+          "concept": "entity"
+        },
+        {
+          "name": "body-frame",
+          "owner": "craft",
+          "concept": "coordinate"
+        },
+        {
+          "name": "origin-shift",
+          "owner": "craft",
+          "concept": "origin-displacement"
+        },
+        {
+          "name": "water",
+          "owner": "water",
+          "concept": "surface"
+        },
+        {
+          "name": "ned-frame",
+          "owner": "world",
+          "concept": "coordinate"
+        },
+        {
+          "name": "annotations",
+          "owner": "figure",
+          "concept": "annotation"
+        }
+      ],
+      "camera": {
+        "eye": [
+          -8,
+          6,
+          -7
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "up": [
+          0,
+          0,
+          -1
+        ],
+        "scale": 1.95,
+        "origin": [
+          5.5,
+          3.2
+        ]
+      },
+      "views": {
+        "ned": {
+          "eye": [
+            -8,
+            6,
+            -7
+          ],
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            -1
+          ],
+          "scale": 0.8,
+          "origin": [
+            1.36,
+            4.35
+          ]
+        }
+      },
+      "poses": {
+        "craft": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "euler_deg": [
+            5,
+            -3,
+            15
+          ]
+        }
+      },
+      "primitives": [
+        {
+          "id": "waterplane",
+          "kind": "polyline",
+          "layer": "water",
+          "points": [
+            [
+              -1.5,
+              -1.15,
+              0
+            ],
+            [
+              1.6,
+              -1.15,
+              0
+            ],
+            [
+              1.6,
+              1.15,
+              0
+            ],
+            [
+              -1.5,
+              1.15,
+              0
+            ],
+            [
+              -1.5,
+              -1.15,
+              0
+            ]
+          ],
+          "line": "#92C3D0",
+          "fill": "#E6F3F5",
+          "alpha": 55,
+          "closed": true,
+          "weight": 0.8,
+          "order": 20
+        },
+        {
+          "id": "pontoon0",
+          "kind": "mesh",
+          "layer": "hull",
+          "pose": "craft",
+          "vertices": [
+            [
+              -1.05,
+              -0.52,
+              -0.1
+            ],
+            [
+              0.78,
+              -0.52,
+              -0.1
+            ],
+            [
+              1.05,
+              -0.395,
+              -0.1
+            ],
+            [
+              0.78,
+              -0.27,
+              -0.1
+            ],
+            [
+              -1.05,
+              -0.27,
+              -0.1
+            ],
+            [
+              -1.05,
+              -0.52,
+              0.18
+            ],
+            [
+              0.78,
+              -0.52,
+              0.18
+            ],
+            [
+              1.05,
+              -0.395,
+              0.18
+            ],
+            [
+              0.78,
+              -0.27,
+              0.18
+            ],
+            [
+              -1.05,
+              -0.27,
+              0.18
+            ]
+          ],
+          "faces": [
+            [
+              4,
+              3,
+              2,
+              1,
+              0
+            ],
+            [
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            [
+              0,
+              1,
+              6,
+              5
+            ],
+            [
+              1,
+              2,
+              7,
+              6
+            ],
+            [
+              2,
+              3,
+              8,
+              7
+            ],
+            [
+              3,
+              4,
+              9,
+              8
+            ],
+            [
+              4,
+              0,
+              5,
+              9
+            ]
+          ],
+          "fill": "#DAE5EF",
+          "line": "#31566F",
+          "weight": 1.2
+        },
+        {
+          "id": "waterline0",
+          "kind": "polyline",
+          "layer": "water",
+          "pose": "craft",
+          "points": [
+            [
+              -1.05,
+              -0.52,
+              0
+            ],
+            [
+              0.78,
+              -0.52,
+              0
+            ],
+            [
+              1.05,
+              -0.395,
+              0
+            ],
+            [
+              0.78,
+              -0.27,
+              0
+            ],
+            [
+              -1.05,
+              -0.27,
+              0
+            ],
+            [
+              -1.05,
+              -0.52,
+              0
+            ]
+          ],
+          "line": "#4D94AA",
+          "weight": 1.0,
+          "dash": true
+        },
+        {
+          "id": "pontoon1",
+          "kind": "mesh",
+          "layer": "hull",
+          "pose": "craft",
+          "vertices": [
+            [
+              -1.05,
+              0.27,
+              -0.1
+            ],
+            [
+              0.78,
+              0.27,
+              -0.1
+            ],
+            [
+              1.05,
+              0.395,
+              -0.1
+            ],
+            [
+              0.78,
+              0.52,
+              -0.1
+            ],
+            [
+              -1.05,
+              0.52,
+              -0.1
+            ],
+            [
+              -1.05,
+              0.27,
+              0.18
+            ],
+            [
+              0.78,
+              0.27,
+              0.18
+            ],
+            [
+              1.05,
+              0.395,
+              0.18
+            ],
+            [
+              0.78,
+              0.52,
+              0.18
+            ],
+            [
+              -1.05,
+              0.52,
+              0.18
+            ]
+          ],
+          "faces": [
+            [
+              4,
+              3,
+              2,
+              1,
+              0
+            ],
+            [
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            [
+              0,
+              1,
+              6,
+              5
+            ],
+            [
+              1,
+              2,
+              7,
+              6
+            ],
+            [
+              2,
+              3,
+              8,
+              7
+            ],
+            [
+              3,
+              4,
+              9,
+              8
+            ],
+            [
+              4,
+              0,
+              5,
+              9
+            ]
+          ],
+          "fill": "#DAE5EF",
+          "line": "#31566F",
+          "weight": 1.2
+        },
+        {
+          "id": "waterline1",
+          "kind": "polyline",
+          "layer": "water",
+          "pose": "craft",
+          "points": [
+            [
+              -1.05,
+              0.27,
+              0
+            ],
+            [
+              0.78,
+              0.27,
+              0
+            ],
+            [
+              1.05,
+              0.395,
+              0
+            ],
+            [
+              0.78,
+              0.52,
+              0
+            ],
+            [
+              -1.05,
+              0.52,
+              0
+            ],
+            [
+              -1.05,
+              0.27,
+              0
+            ]
+          ],
+          "line": "#4D94AA",
+          "weight": 1.0,
+          "dash": true
+        },
+        {
+          "id": "bridge",
+          "kind": "mesh",
+          "layer": "hull",
+          "pose": "craft",
+          "vertices": [
+            [
+              -0.72,
+              -0.52,
+              -0.19
+            ],
+            [
+              0.6,
+              -0.52,
+              -0.19
+            ],
+            [
+              0.6,
+              0.52,
+              -0.19
+            ],
+            [
+              -0.72,
+              0.52,
+              -0.19
+            ],
+            [
+              -0.72,
+              -0.52,
+              -0.1
+            ],
+            [
+              0.6,
+              -0.52,
+              -0.1
+            ],
+            [
+              0.6,
+              0.52,
+              -0.1
+            ],
+            [
+              -0.72,
+              0.52,
+              -0.1
+            ]
+          ],
+          "faces": [
+            [
+              3,
+              2,
+              1,
+              0
+            ],
+            [
+              4,
+              5,
+              6,
+              7
+            ],
+            [
+              0,
+              1,
+              5,
+              4
+            ],
+            [
+              1,
+              2,
+              6,
+              5
+            ],
+            [
+              2,
+              3,
+              7,
+              6
+            ],
+            [
+              3,
+              0,
+              4,
+              7
+            ]
+          ],
+          "fill": "#B4CCDF",
+          "line": "#31566F",
+          "weight": 1.2
+        },
+        {
+          "id": "cabin",
+          "kind": "mesh",
+          "layer": "hull",
+          "pose": "craft",
+          "vertices": [
+            [
+              -0.62,
+              -0.2,
+              -0.49
+            ],
+            [
+              -0.19,
+              -0.2,
+              -0.49
+            ],
+            [
+              -0.19,
+              0.2,
+              -0.49
+            ],
+            [
+              -0.62,
+              0.2,
+              -0.49
+            ],
+            [
+              -0.62,
+              -0.2,
+              -0.19
+            ],
+            [
+              -0.19,
+              -0.2,
+              -0.19
+            ],
+            [
+              -0.19,
+              0.2,
+              -0.19
+            ],
+            [
+              -0.62,
+              0.2,
+              -0.19
+            ]
+          ],
+          "faces": [
+            [
+              3,
+              2,
+              1,
+              0
+            ],
+            [
+              4,
+              5,
+              6,
+              7
+            ],
+            [
+              0,
+              1,
+              5,
+              4
+            ],
+            [
+              1,
+              2,
+              6,
+              5
+            ],
+            [
+              2,
+              3,
+              7,
+              6
+            ],
+            [
+              3,
+              0,
+              4,
+              7
+            ]
+          ],
+          "fill": "#729AB7",
+          "line": "#31566F",
+          "weight": 1.2
+        },
+        {
+          "id": "cg-frame",
+          "kind": "frame",
+          "layer": "body-frame",
+          "pose": "craft",
+          "origin": [
+            0.153125,
+            0,
+            -0.246875
+          ],
+          "lengths": [
+            1.22,
+            0.97,
+            0.88
+          ],
+          "labels": [
+            "x_{b} 向艏",
+            "y_{b} 右舷",
+            "z_{b} 向下"
+          ],
+          "label_offsets": [
+            [
+              0.06,
+              0.02
+            ],
+            [
+              0.02,
+              -0.12
+            ],
+            [
+              0.08,
+              -0.3
+            ]
+          ],
+          "label_width": 1.4,
+          "weight": 2.4,
+          "size": 20
+        },
+        {
+          "id": "cg-label",
+          "kind": "label",
+          "layer": "body-frame",
+          "pose": "craft",
+          "anchor": [
+            0.153125,
+            0,
+            -0.246875
+          ],
+          "offset": [
+            -1.65,
+            1.75
+          ],
+          "text": "G 总质心",
+          "w": 1.65,
+          "h": 0.4,
+          "size": 20,
+          "color": "#243646",
+          "leader": true,
+          "leader_layer": "annotations"
+        },
+        {
+          "id": "co-marker",
+          "kind": "polyline",
+          "layer": "origin-shift",
+          "pose": "craft",
+          "points": [
+            [
+              0.035,
+              0,
+              0
+            ],
+            [
+              0,
+              0.035,
+              0
+            ],
+            [
+              -0.035,
+              0,
+              0
+            ],
+            [
+              0,
+              -0.035,
+              0
+            ],
+            [
+              0.035,
+              0,
+              0
+            ]
+          ],
+          "closed": true,
+          "line": "#A36B2D",
+          "fill": "#FFF7E8",
+          "weight": 1.7
+        },
+        {
+          "id": "co-label",
+          "kind": "label",
+          "layer": "origin-shift",
+          "pose": "craft",
+          "anchor": [
+            0,
+            0,
+            0
+          ],
+          "offset": [
+            -3.25,
+            -2.0
+          ],
+          "text": "O 安装基准",
+          "w": 1.8,
+          "h": 0.4,
+          "size": 18,
+          "color": "#996328",
+          "leader": true,
+          "leader_layer": "annotations"
+        },
+        {
+          "id": "origin-arrow",
+          "kind": "arrow",
+          "layer": "origin-shift",
+          "pose": "craft",
+          "points": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0.153125,
+              0,
+              -0.246875
+            ]
+          ],
+          "line": "#C38436",
+          "weight": 2
+        },
+        {
+          "id": "ned",
+          "kind": "frame",
+          "layer": "ned-frame",
+          "view": "ned",
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "lengths": [
+            1.1,
+            1.1,
+            1.1
+          ],
+          "labels": [
+            "N",
+            "E",
+            "D"
+          ],
+          "label_offsets": [
+            [
+              0.02,
+              0.01
+            ],
+            [
+              -0.05,
+              0.02
+            ],
+            [
+              0.08,
+              -0.15
+            ]
+          ],
+          "label_width": 0.42,
+          "weight": 1.6,
+          "size": 17,
+          "dash": true
+        },
+        {
+          "id": "mean-water-label",
+          "kind": "label",
+          "layer": "annotations",
+          "anchor": [
+            1.4,
+            -1.12,
+            0
+          ],
+          "offset": [
+            0.35,
+            -0.6
+          ],
+          "text": "平均水面",
+          "w": 1.45,
+          "h": 0.35,
+          "size": 17,
+          "color": "#3E879B"
+        }
+      ],
+      "overlays": [
+        {
+          "id": "ned-inset-title",
+          "kind": "text",
+          "layer": "annotations",
+          "x": 0.37,
+          "y": 5.65,
+          "w": 2.1,
+          "h": 0.32,
+          "text": "地固方向 NED",
+          "size": 18,
+          "color": "#243646"
+        },
+        {
+          "id": "ned-inset-note",
+          "kind": "text",
+          "layer": "annotations",
+          "x": 0.37,
+          "y": 5.24,
+          "w": 2.1,
+          "h": 0.28,
+          "text": "移位显示",
+          "size": 16,
+          "color": "#5E6A75"
+        },
+        {
+          "id": "body-note",
+          "kind": "text",
+          "layer": "annotations",
+          "x": 3.2,
+          "y": 0.3,
+          "w": 5.8,
+          "h": 0.37,
+          "text": "船体坐标随船转动   原点位于加载后总质心",
+          "size": 17,
+          "color": "#243646"
+        },
+        {
+          "id": "scale-note",
+          "kind": "text",
+          "layer": "annotations",
+          "x": 0.35,
+          "y": 0.32,
+          "w": 2.6,
+          "h": 0.34,
+          "text": "示意几何  非实测船型",
+          "size": 15.5,
+          "color": "#64717A"
+        }
+      ]
+    }
+  ]
+}
