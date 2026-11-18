@@ -10,6 +10,16 @@ function Has($o,$key){return $null -ne $o.PSObject.Properties[$key]}
 function Num($n){return ([double]$n).ToString('R',[Globalization.CultureInfo]::InvariantCulture)}
 function Finite($n){return $null -ne $n -and ![double]::IsNaN([double]$n) -and ![double]::IsInfinity([double]$n)}
 function Cell($s,$key,$value){$s.CellsU($key).FormulaU=[string]$value}
+# Side names refer to the unrotated node in page coordinates.
+$portOffsets = @{left=@(0,0.5);right=@(1,0.5);top=@(0.5,1);bottom=@(0.5,0)}
+function GlueEndpoint($cell,$node,$side){
+ if($side){
+  $offset=$portOffsets[$side]
+  $cell.GlueToPos($node,[double]$offset[0],[double]$offset[1])
+ }else{
+  $cell.GlueTo($node.CellsU('PinX'))
+ }
+}
 function Color($hex){
  if($hex -notmatch '^#[0-9a-fA-F]{6}$'){throw "Invalid color: $hex"}
  return 'RGB({0},{1},{2})' -f [Convert]::ToInt32($hex.Substring(1,2),16),[Convert]::ToInt32($hex.Substring(3,2),16),[Convert]::ToInt32($hex.Substring(5,2),16)
@@ -107,6 +117,9 @@ foreach($scene in $scenes){
    if(@($item.points).Count -lt 2){throw 'Polyline needs two points'}
    foreach($point in $item.points){if(@($point).Count -ne 2 -or !(Finite $point[0]) -or !(Finite $point[1])){throw 'Invalid point'}}
   }
+  foreach($field in @('fromSide','toSide')){
+   if((Has $item $field) -and ($item.kind -ne 'connector' -or $item.$field -notin $portOffsets.Keys)){throw "Invalid connector side: $field"}
+  }
   if($item.notation -and $item.runs){throw 'Choose notation or explicit runs'}
   if((Has $item 'italic') -and $item.italic -isnot [bool]){throw 'italic must be boolean'}
   foreach($key in @('weight','size')){if((Has $item $key) -and (!(Finite $item.$key) -or $item.$key -le 0)){throw "Invalid $key"}}
@@ -165,8 +178,8 @@ try{
    $shapeMap[$item.id]=$shape
   }
   foreach($edge in $connectors){
-   $edge.shape.CellsU('BeginX').GlueTo($shapeMap[$edge.item.from].CellsU('PinX'))
-   $edge.shape.CellsU('EndX').GlueTo($shapeMap[$edge.item.to].CellsU('PinX'))
+   GlueEndpoint ($edge.shape.CellsU('BeginX')) $shapeMap[$edge.item.from] $edge.item.fromSide
+   GlueEndpoint ($edge.shape.CellsU('EndX')) $shapeMap[$edge.item.to] $edge.item.toSide
   }
   # Connector masters may create a localized default layer; keep only declared semantics.
   for($ix=$page.Layers.Count;$ix -ge 1;$ix--){$nativeLayer=$page.Layers.Item($ix);if(!$layerMap.ContainsKey([string]$nativeLayer.Name)){$nativeLayer.Delete(0)}}

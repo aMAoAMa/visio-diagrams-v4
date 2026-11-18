@@ -1,7 +1,8 @@
-# Visio 文档插图四代
+# Visio 文档插图五代
 
-`visio-diagrams-v4` 是一个面向论文和技术文档的 Codex Skill。它将几何关系、坐标约定和标注写入 JSON 场景，生成带原生图层和可编辑图元的 Visio 文件及同版 PNG，便于修改插图并按实际栏宽排版。
+`visio-diagrams-v5` 是一个面向论文和技术文档的 Codex Skill。它将几何关系、坐标约定和标注写入 JSON 场景，生成带原生图层和可编辑图元的 Visio 文件及同版 PNG，便于修改插图并按实际栏宽排版。
 
+- 控制框图按方程区分给定、测量与反馈，支持将原生连接线粘连到模块指定边的中点。可参考[控制图设计](references/control-figures.md)绘制观测器、串级控制、MPC 架构和信号时序。
 - 适用于三维坐标系与姿态、六自由度、受力与力矩、流域边界、工程示意和流程图。
 - 在同一视图内统一投影实体、坐标轴、力和力矩，支持正交投影、透视投影及隐线处理。修改相机、姿态或载荷后，可从源 JSON 重新生成。
 - VSDX 中的线、面、文字、上下标和流程连接线可在 Visio 中编辑。三维几何以投影后的二维图元保存，三维参数保留在源场景中。
@@ -14,12 +15,18 @@
 ```powershell
 $skillsDir = Join-Path $env:USERPROFILE '.agents/skills'
 New-Item -ItemType Directory -Path $skillsDir -Force | Out-Null
-git clone https://github.com/aMAoAMa/visio-diagrams-v4.git (Join-Path $skillsDir 'visio-diagrams-v4')
+git clone https://github.com/aMAoAMa/visio-diagrams-v4.git (Join-Path $skillsDir 'visio-diagrams-v5')
 ```
 
-在 Codex 中选择 `Visio 文档插图四代` 或调用 `$visio-diagrams-v4`。若技能未显示，重启 Codex。提供相关正文、公式或参考图，并说明插图栏宽和语言。
+在 Codex 中选择 `Visio 文档插图五代` 或调用 `$visio-diagrams-v5`。若技能未显示，重启 Codex。提供相关正文、公式或参考图，并说明插图栏宽和语言。
 
-> 用 `$visio-diagrams-v4` 根据正文里的体固坐标约定绘制船体六自由度示意图。栏宽为 165 mm，标注使用中文，交付可编辑 VSDX、同版 PNG 和源场景。
+> 用 `$visio-diagrams-v5` 根据正文里的体固坐标约定绘制船体六自由度示意图。栏宽为 165 mm，标注使用中文，交付可编辑 VSDX、同版 PNG 和源场景。
+
+## 单栏负反馈示例
+
+![单栏负反馈框图，测量信号经 H(s) 返回求和点的负端](examples/feedback-loop.png)
+
+[可编辑 Visio 样图](examples/feedback-loop.vsdx) · [二维源场景](examples/feedback-loop.json) · [复现命令](examples/guide.md)
 
 ## 运行示例
 

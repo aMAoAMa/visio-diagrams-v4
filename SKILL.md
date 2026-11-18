@@ -1,34 +1,41 @@
 ---
-name: visio-diagrams-v4
-description: "为论文和技术文档绘制、审校或修改原生可编辑、语义分层的 Visio 插图及同版 PNG。用于 Visio 文档插图四代、三维坐标系和姿态、六自由度、受力与力矩、流域边界和工程示意。数值曲线保留科学绘图源与数据。"
+name: visio-diagrams-v5
+description: "按控制与工程论文的符号和版面绘制、审校或修改原生可编辑 Visio 插图。适用于反馈框图、估计与优化控制架构、算法与信号时序、坐标姿态和物理示意，以及结构图与数据子图组合。"
 ---
 
-# Visio 文档插图四代
+# Visio 文档插图五代
 
-先确定读者要从图中确认的物理或结构关系，再选择视图、设计标注并生成原生 Visio 图形。三维源场景、投影场景、VSDX 和 PNG 同步保存。
+先从图题、相邻公式或已有图中找出读者要验证的一条关系。修改已有图时先辨认现有节点、连接、符号和用户指定的改动范围；保留可复用的原生形状。仅审图时给出具体位置、与正文的矛盾和修法。
 
-## 选择表达
+## 按图意选择表达
 
-- 读实际参考图、图题、相邻正文和公式。记录主关系、约定、几何依据、图面语言和实际栏宽。参考图提供构图和标注线索，技术定义以当前任务为准。几何简化时在图注注明“示意”。
-- 多坐标系用主体斜视或能直接说明变换的平面视图。六自由度用直轴与绕轴弧。边界、法向或尺寸主要在一个平面内时，用侧剖或相互对齐的正交视图。选择范式和核对物理约定时读 [船舶与流域示意](references/marine-schematics.md)，追溯原图和图号时读 [文献图例](references/literature.md)。
-- 一般布局、缩放、字号和线型见 [视觉设计](references/visual-design.md)。先检查复杂图的一幅样稿。主关系受遮挡或标注拥挤时，调整视角、按物理关系拆分子图或加局部图。已有绘图、另存和插入授权可继续执行。
+| 读者的问题 | 表达与依据 |
+|---|---|
+| 谁测量、计算什么、作用于哪里？ | 从方程列出信号的来源、接收端、名称及求和符号，再布置主通道与回路。观测器、串级、多变量和 MPC 见[控制图设计](references/control-figures.md)。 |
+| 哪一步先执行，哪一拍生效？ | 判断、迭代、退出用流程图；采样、延迟、异步更新用共享时间轴。把算法内部迭代与物理系统的反馈区分开。 |
+| 方向、几何或约束如何定义？ | 平面内的角度和边界用正交视图。空间关系读[空间表达](references/spatial-graphics.md)及[场景格式](references/scene3d-format.md)。按实际原点、基向量与观察方向投影，方向只旋转，作用点同时平移。船舶、流域专例见[物理约定](references/marine-schematics.md)及[文献图例](references/literature.md)。 |
+| 数据能支持哪项比较？ | 用数据与科学绘图脚本生成响应、频响或相轨迹，保留源数据和配置。与原生 Visio 结构子图组合时标明可编辑范围。无数据时只表达已知结构或明确标作示意的趋势。 |
 
-## 几何与原生编辑
+没有完全匹配的图型时，先辨认箭头表达信号传输、时间先后、物质流动还是几何方向。只有正文赋予的关系才入图。正文未给的测量、增益、时延、扰动通道或性能值应留待确认。可以先绘制有依据的部分。
 
-- 三维图读 [空间表达与坐标](references/spatial-graphics.md) 和 [三维场景格式](references/scene3d-format.md)。在右手三维系定义原点、基向量、法向、作用点与矩心，用 `poses` 组合变换。点含平移，方向只旋转。每个视图统一投影，默认正交。
-- 先调相机以分辨轴和主体。轴起点绑定实际原点，移位显示须注明。遮挡按不透明面计算，隐段按需省略或弱虚线。覆盖投影须有明确的透视参照或概念说明。相交面和复杂透明介质需要人工检查。
-- 力用直箭头，矩用三维绕轴弧。核对法向的所属对象与正方向，以及载荷、力矩、角度和角速度的含义。分布载荷与等效合力同图时标明等效关系。
-- 二维场景和渲染步骤见 [Visio 原生绘制](references/visio-authoring.md)。使用独立 `Visio.InvisibleApp`，按对象与概念分真实图层。每个面、线、弧和文字为原生二维图元，变量可斜排，中文和上下标可编辑。流程连接线按实际连接粘连。修改三维关系或相机时改源场景后重生成。
+## 设计和生成
 
-## 生成与验收
+以稿件实际插入宽度定画布；期刊模板、用户参考图和稿件语言优先。白底、深色线条、就近标注；灰度下仍可通过线型、符号或位置区分含义。缩印时优先重排长回路或拆分子图。字号和线宽的换算见[视觉设计](references/visual-design.md)，控制论文参照来源见[控制图设计](references/control-figures.md)。
+
+按对象与概念建立 Visio 图层。控制模块、求和点、取样点、连接线和文字各用原生图元，连接端粘连到实际对象。坐标轴绑定原点，矩按右手约定用绕轴弧。核查隐线与载荷方向。原生形状、字体、另存和导出接口见[绘制规范](references/visio-authoring.md)。
+
+从技能目录运行。二维输入直接使用 scene2d.json；三维输入先用 `python scripts/project_scene3d.py --input scene3d.json --output scene2d.json` 投影。下面以随附的单栏框图为例。运行前将 $figures 指向任务的输出目录，换图时同时更新 $scene 与实际栏宽。
 
 ```powershell
-python '<skill>/scripts/project_scene3d.py' --input '<task>/scene3d.json' --output '<task>/scene2d.json'
-python '<skill>/scripts/check_scene.py' '<task>/scene2d.json' --target-width 6.5
-& '<skill>/scripts/render_visio.ps1' -ScenePath '<task>/scene2d.json' -OutputDirectory '<task>/figures'
-python '<skill>/scripts/audit_vsdx.py' --scene '<task>/scene2d.json' --directory '<task>/figures' --output '<task>/native-audit.json'
+$scene = "examples/feedback-loop.json"
+$figures = Join-Path $env:TEMP ("visio-figures-" + [guid]::NewGuid())
+python scripts/check_scene.py $scene --target-width 3.5
+& ./scripts/render_visio.ps1 -ScenePath $scene -OutputDirectory $figures
+python scripts/audit_vsdx.py --scene $scene --directory $figures
 ```
 
-纯二维图从第二步开始。将 `--target-width` 改成实际插入宽度，单位为英寸。渲染器保存后重开文件，结构核验读取落盘 VSDX。逐图检查几何诊断、原生结构、标注对应关系、缩印和灰度效果。修订后同步导出。
+## 验收与交付
 
-可运行样例见 [场景示例](examples/guide.md)。Word 插图替换见 [文档集成](references/document-integration.md)。交付 VSDX、同版 PNG 和源场景，数值曲线附科学绘图源和数据。
+沿着成图的每个回路回读一次方程，或按图意复核时序、几何、曲线与数据。再看实际栏宽和灰度下的 PNG，检查正负号与端口的对应、相交线、裁切、字体和子图对齐。结构审计只能验证文件中的对象与粘连，不能证明控制律正确。源场景、落盘 VSDX 和同版 PNG 一起更新；三维图附投影前场景。原生渲染需要 Windows 桌面版 Visio，如环境仅能检查源文件，要说明实际完成到哪一步。
+
+运行样例见[示例索引](examples/guide.md)。涉及 Word 原位替图时读[文档集成](references/document-integration.md)。

@@ -46,7 +46,7 @@
 - 图形样式：`line`、`fill` 使用 `#RRGGBB`；`weight` 单位 pt；`dash`、`endArrow`、`startArrow` 为布尔值；`alpha` 是填充透明度百分数；`closed` 封闭多边形；`round` 是矩形圆角英寸数。
 - 文字：`text`、`size`（pt）、`color`、可选 `font`、`align`（0 左、1 中、2 右）。布尔值 `italic` 控制原生斜体。混排时可把斜体变量与正体说明置于相邻文字框。矩形和椭圆也可直接带 `text`。
 - `notation: true` 把 `F_{H}`、`Q_{01}^{(2)}` 转为原生字符上下标，不是 LaTeX 渲染器。普通流程文字默认不要开启。也可显式给 `runs: [{"start":1,"end":2,"position":"subscript"}]`；索引是无花括号纯文本的零起点 UTF-16 范围，end 不含。
-- 连线：`kind: "connector"`，`from` 和 `to` 指向形状 id。脚本创建原生 Dynamic Connector，再将两端 GlueTo 节点；可带必要分支 `text`。必须检查导出的路径没有穿过其他节点。
+- 连线：`kind: "connector"`，`from` 和 `to` 指向形状 id。脚本创建原生 Dynamic Connector，再将两端粘连到节点。可选 fromSide、toSide 各取 left、right、top、bottom 之一，将对应端固定到节点边中点；省略时由 Visio 动态选择接点；可带必要分支 `text`。必须检查导出的路径没有穿过其他节点。
 - 复杂弧线、受力箭头或三维投影，用采样点构造原生 `poly`。符号与对应几何同一层；不要为每个下标建立新层。
 
 ## 验证与修订

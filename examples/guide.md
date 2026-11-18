@@ -1,6 +1,15 @@
-# 四代场景示例
+# 可运行场景
 
-三个新样例的源画布宽度均为 6.5 in（165 mm）。改用于窄栏时按实际宽度重排标签和视图。
+[单栏反馈框图](feedback-loop.json) 是 3.5 in 的二维场景。参考输入 r 与返回量 m 作差，经 C(s)、G(s) 输出 y，由 H(s) 生成 m。运行以下命令（从技能根目录执行，输出目录选在任务工作区），再按端口逐一核对导出的 PNG。可对照已验证的[原生样图](feedback-loop.vsdx)和[预览](feedback-loop.png)。
+
+```powershell
+$figures = Join-Path $env:TEMP ("visio-figures-" + [guid]::NewGuid())
+python scripts/check_scene.py examples/feedback-loop.json --target-width 3.5
+& ./scripts/render_visio.ps1 -ScenePath examples/feedback-loop.json -OutputDirectory $figures
+python scripts/audit_vsdx.py --scene examples/feedback-loop.json --directory $figures
+```
+
+下表三个工程样例的源画布宽度均为 6.5 in（165 mm）。改用于窄栏时按实际宽度重排标签和视图。
 
 | 源文件 | 样例 | 物理约定 |
 |---|---|---|

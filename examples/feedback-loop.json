@@ -1,0 +1,275 @@
+{
+  "scenes": [
+    {
+      "name": "feedback-loop",
+      "width": 3.5,
+      "height": 1.4,
+      "font": "Arial",
+      "layers": [
+        {
+          "name": "signals",
+          "owner": "loop",
+          "concept": "signal"
+        },
+        {
+          "name": "blocks",
+          "owner": "loop",
+          "concept": "operation"
+        },
+        {
+          "name": "labels",
+          "owner": "loop",
+          "concept": "annotation"
+        }
+      ],
+      "shapes": [
+        {
+          "id": "reference",
+          "kind": "text",
+          "layer": "labels",
+          "x": 0.02,
+          "y": 0.91,
+          "w": 0.17,
+          "h": 0.19,
+          "text": "r",
+          "size": 10,
+          "color": "#222222",
+          "italic": true
+        },
+        {
+          "id": "sum",
+          "kind": "ellipse",
+          "layer": "blocks",
+          "x": 0.58,
+          "y": 0.9,
+          "w": 0.21,
+          "h": 0.21,
+          "fill": "#FFFFFF",
+          "line": "#222222",
+          "weight": 0.8
+        },
+        {
+          "id": "controller",
+          "kind": "rect",
+          "layer": "blocks",
+          "x": 1.1,
+          "y": 0.85,
+          "w": 0.51,
+          "h": 0.31,
+          "line": "#222222",
+          "weight": 0.8,
+          "fill": "#FFFFFF",
+          "text": "C(s)",
+          "italic": true,
+          "size": 10,
+          "color": "#222222"
+        },
+        {
+          "id": "plant",
+          "kind": "rect",
+          "layer": "blocks",
+          "x": 2.04,
+          "y": 0.85,
+          "w": 0.5,
+          "h": 0.31,
+          "line": "#222222",
+          "weight": 0.8,
+          "fill": "#FFFFFF",
+          "text": "G(s)",
+          "italic": true,
+          "size": 10,
+          "color": "#222222"
+        },
+        {
+          "id": "sensor",
+          "kind": "rect",
+          "layer": "blocks",
+          "x": 1.5,
+          "y": 0.15,
+          "w": 0.54,
+          "h": 0.31,
+          "line": "#222222",
+          "weight": 0.8,
+          "fill": "#FFFFFF",
+          "text": "H(s)",
+          "italic": true,
+          "size": 10,
+          "color": "#222222"
+        },
+        {
+          "id": "tap",
+          "kind": "ellipse",
+          "layer": "signals",
+          "x": 2.92,
+          "y": 0.985,
+          "w": 0.04,
+          "h": 0.04,
+          "fill": "#222222",
+          "noLine": true
+        },
+        {
+          "id": "output",
+          "kind": "text",
+          "layer": "labels",
+          "x": 3.27,
+          "y": 0.91,
+          "w": 0.19,
+          "h": 0.19,
+          "text": "y",
+          "size": 10,
+          "color": "#222222",
+          "italic": true
+        },
+        {
+          "id": "reference-in",
+          "kind": "connector",
+          "layer": "signals",
+          "from": "reference",
+          "to": "sum",
+          "fromSide": "right",
+          "toSide": "left",
+          "line": "#222222",
+          "weight": 0.75,
+          "endArrow": true
+        },
+        {
+          "id": "error-out",
+          "kind": "connector",
+          "layer": "signals",
+          "from": "sum",
+          "to": "controller",
+          "fromSide": "right",
+          "toSide": "left",
+          "line": "#222222",
+          "weight": 0.75,
+          "endArrow": true
+        },
+        {
+          "id": "actuation",
+          "kind": "connector",
+          "layer": "signals",
+          "from": "controller",
+          "to": "plant",
+          "fromSide": "right",
+          "toSide": "left",
+          "line": "#222222",
+          "weight": 0.75,
+          "endArrow": true
+        },
+        {
+          "id": "plant-out",
+          "kind": "connector",
+          "layer": "signals",
+          "from": "plant",
+          "to": "tap",
+          "fromSide": "right",
+          "toSide": "left",
+          "line": "#222222",
+          "weight": 0.75,
+          "endArrow": false
+        },
+        {
+          "id": "output-line",
+          "kind": "connector",
+          "layer": "signals",
+          "from": "tap",
+          "to": "output",
+          "fromSide": "right",
+          "toSide": "left",
+          "line": "#222222",
+          "weight": 0.75,
+          "endArrow": true
+        },
+        {
+          "id": "measurement",
+          "kind": "connector",
+          "layer": "signals",
+          "from": "tap",
+          "to": "sensor",
+          "fromSide": "bottom",
+          "toSide": "right",
+          "line": "#222222",
+          "weight": 0.75,
+          "endArrow": true
+        },
+        {
+          "id": "feedback",
+          "kind": "connector",
+          "layer": "signals",
+          "from": "sensor",
+          "to": "sum",
+          "fromSide": "left",
+          "toSide": "bottom",
+          "line": "#222222",
+          "weight": 0.75,
+          "endArrow": true
+        },
+        {
+          "id": "positive",
+          "kind": "text",
+          "layer": "labels",
+          "x": 0.41,
+          "y": 1.04,
+          "w": 0.16,
+          "h": 0.19,
+          "text": "+",
+          "size": 10,
+          "color": "#222222",
+          "italic": false
+        },
+        {
+          "id": "negative",
+          "kind": "text",
+          "layer": "labels",
+          "x": 0.47,
+          "y": 0.68,
+          "w": 0.17,
+          "h": 0.19,
+          "text": "−",
+          "size": 10,
+          "color": "#222222",
+          "italic": false
+        },
+        {
+          "id": "error",
+          "kind": "text",
+          "layer": "labels",
+          "x": 0.83,
+          "y": 1.04,
+          "w": 0.19,
+          "h": 0.19,
+          "text": "e",
+          "size": 10,
+          "color": "#222222",
+          "italic": true
+        },
+        {
+          "id": "input",
+          "kind": "text",
+          "layer": "labels",
+          "x": 1.72,
+          "y": 1.04,
+          "w": 0.23,
+          "h": 0.19,
+          "text": "u",
+          "size": 10,
+          "color": "#222222",
+          "italic": true
+        },
+        {
+          "id": "measured",
+          "kind": "text",
+          "layer": "labels",
+          "x": 1.04,
+          "y": 0.34,
+          "w": 0.23,
+          "h": 0.19,
+          "text": "m",
+          "size": 10,
+          "color": "#222222",
+          "italic": true
+        }
+      ]
+    }
+  ]
+}

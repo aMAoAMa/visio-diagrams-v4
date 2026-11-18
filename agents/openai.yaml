@@ -1,6 +1,6 @@
 interface:
-  display_name: "Visio 文档插图四代"
-  short_description: "生成分层可编辑的论文插图，支持三维坐标系、六自由度、受力和流域边界示意"
-  default_prompt: "用 $visio-diagrams-v4 按正文的物理约定绘制论文示意图，交付原生 Visio、同版 PNG 和源场景。"
+  display_name: "Visio 文档插图五代"
+  short_description: "按控制方程与论文栏宽绘制可编辑反馈框图、算法时序和工程示意图"
+  default_prompt: "用 $visio-diagrams-v5 按正文方程和实际栏宽绘制可编辑的论文插图，核对符号与信号方向。"
 policy:
   allow_implicit_invocation: true
